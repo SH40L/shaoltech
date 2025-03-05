@@ -25,8 +25,8 @@
         "category": "Electronics",
         "description": "Latest smart watch with health tracking features.",
         "images": [
-            "assets/images/products/watch1.jpg",
-            "assets/images/products/watch2.jpg"
+            "../assets/images/products/Birthday Gift.jpg",
+            "../assets/images/products/Allah + Muhammad.jpg"
         ],
         "variants": [
             {
