@@ -1,11 +1,9 @@
-// Determine the base path dynamically for local and GitHub Pages environments
-const basePath = window.location.hostname === 'localhost' || window.location.protocol === 'file:' ? '' : '/shaoltech';
+// products.js
 
 // Fetch products from the JSON file
 async function loadProducts() {
   try {
-    const response = await fetch(`${basePath}/data/products.json`);
-    if (!response.ok) throw new Error('Failed to fetch products');
+    const response = await fetch('/assets/data/products.json');
     const products = await response.json();
     displayFeaturedProducts(products);
     displayAllProducts(products);
@@ -30,11 +28,11 @@ function displayFeaturedProducts(products) {
   
   featuredContainer.innerHTML = featuredProducts.map(product => `
     <div class="product-card">
-      <img src="${basePath}/${product.images[0]}" alt="${product.name}">
+      <img src="${product.images[0]}" alt="${product.name}">
       <h3>${product.name}</h3>
       <p class="price">${getPriceRange(product.variants)}</p>
       <button class="buy-now" onclick="window.location.href='product-details.html?id=${product.id}'">Buy Now</button>
-      <button class="message-us" onclick="messageUs('${product.id}', '${product.name}', '${getPriceRange(product.variants)}', '${basePath}/${product.images[0]}')">Message Us</button>
+      <button class="message-us" onclick="messageUs('${product.id}', '${product.name}', '${getPriceRange(product.variants)}', '${product.images[0]}')">Message Us</button>
     </div>
   `).join('');
   
@@ -47,11 +45,11 @@ function displayAllProducts(products) {
   
   allProductsContainer.innerHTML = products.map(product => `
     <div class="product-card">
-      <img src="${basePath}/${product.images[0]}" alt="${product.name}">
+      <img src="${product.images[0]}" alt="${product.name}">
       <h3>${product.name}</h3>
       <p class="price">${getPriceRange(product.variants)}</p>
       <button class="buy-now" onclick="window.location.href='product-details.html?id=${product.id}'">Buy Now</button>
-      <button class="message-us" onclick="messageUs('${product.id}', '${product.name}', '${getPriceRange(product.variants)}', '${basePath}/${product.images[0]}')">Message Us</button>
+      <button class="message-us" onclick="messageUs('${product.id}', '${product.name}', '${getPriceRange(product.variants)}', '${product.images[0]}')">Message Us</button>
     </div>
   `).join('');
 }

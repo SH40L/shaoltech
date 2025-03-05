@@ -5,7 +5,7 @@
         "category": "Electronics",
         "description": "High-quality wireless earbuds with noise cancellation.",
         "images": [
-            "../assets/images/products/Blank.jpg"            
+            "/assets/images/products/Blank.jpg"            
         ],
         "variants": [
             {
@@ -25,8 +25,7 @@
         "category": "Electronics",
         "description": "Latest smart watch with health tracking features.",
         "images": [
-            "../assets/images/products/Birthday Gift.jpg",
-            "../assets/images/products/Allah + Muhammad.jpg"
+            "../images/products/Birthday Gift.jpg"
         ],
         "variants": [
             {
@@ -46,7 +45,7 @@
         "category": "Gadgets",
         "description": "Ergonomic gaming mouse with customizable buttons.",
         "images": [
-            "assets/images/products/mouse1.jpg",
+            "../assets/images/products/Allah + Muhammad.jpg",
             "assets/images/products/mouse2.jpg"
         ],
         "variants": [
