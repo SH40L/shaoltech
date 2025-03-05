@@ -3,7 +3,7 @@
 // Fetch products from the JSON file
 async function loadProducts() {
   try {
-    const response = await fetch('../../data/products.json');
+    const response = await fetch('/data/products.json');
     const products = await response.json();
     displayFeaturedProducts(products);
     displayAllProducts(products);
