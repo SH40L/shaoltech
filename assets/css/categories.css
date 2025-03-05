@@ -1,0 +1,52 @@
+/* ===========================
+   CATEGORY SECTION STYLES
+   =========================== */
+
+#categories {
+  margin: 40px 0;
+  text-align: center; /* Center the title */
+}
+
+#categories h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.category-container {
+  /* Flex layout that wraps to create multiple rows */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Center items horizontally */
+  gap: 20px; /* Space between items */
+}
+
+/* Each category card */
+.category-item {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;         /* Slightly rounded corners */
+  width: 160px;               /* Fixed width for uniform cards */
+  height: 80px;              /* Fixed height for uniform cards */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.category-item:hover {
+  transform: translateY(-5px);  /* Lift up on hover */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.category-icon {
+  font-size: 28px; /* Size of the emoji or icon */
+  margin-bottom: 5px;
+}
+
+.category-item p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+}

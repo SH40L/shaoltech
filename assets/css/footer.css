@@ -1,0 +1,53 @@
+/* footer.css */
+/* Footer design with a white background and black text to match your logo */
+
+footer {
+  background-color: #fff; /* White background */
+  color: #000; /* Black text */
+  padding: 20px;
+  border-top: 1px solid #ddd;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+.footer-logo img {
+  height: 50px;
+  transition: transform 0.3s ease;
+}
+
+/* Hover effect on the logo */
+.footer-logo a:hover img {
+  transform: scale(1.05);
+}
+
+.footer-links,
+.footer-contact,
+.footer-social {
+  margin: 10px 0;
+}
+
+.footer-links a,
+.footer-contact a,
+.footer-social a {
+  color: #000;
+  text-decoration: none;
+  margin: 0 10px;
+  font-weight: bold;
+}
+
+.footer-links a:hover,
+.footer-social a:hover {
+  text-decoration: underline;
+}
+
+.footer-contact p {
+  margin: 0;
+}

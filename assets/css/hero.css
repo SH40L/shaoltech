@@ -1,0 +1,45 @@
+/* hero.css */
+/* Styles for the carousel (hero) section */
+
+/* Container for the carousel with fixed height */
+.carousel-container {
+    position: relative;
+    overflow: hidden;
+    max-width: 100%;
+    height: 400px;
+  }
+  
+  /* Hide all slides by default */
+  .carousel-slides .slide {
+    display: none;
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Display the active slide */
+  .carousel-slides .slide.active {
+    display: block;
+  }
+  
+  /* Ensure images fill the slide area */
+  .carousel-slides .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Position carousel indicators at the bottom center */
+  .carousel-indicators {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  /* Style indicators with pointer cursor */
+  .carousel-indicators .indicator {
+    cursor: pointer;
+    font-size: 20px;
+    margin: 0 5px;
+  }
+  

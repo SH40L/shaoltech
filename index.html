@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SHAOL Tech - Home</title>
+    <link rel="shortcut icon" href="assets/images/Website Favicon.png" type="image/x-icon">
+    <!-- Global and component-specific CSS files -->
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/header.css" />
+    <link rel="stylesheet" href="assets/css/hero.css" />
+    <link rel="stylesheet" href="assets/css/product-card.css" />
+    <link rel="stylesheet" href="assets/css/products.css" />
+    <link rel="stylesheet" href="assets/css/footer.css" />
+    <link rel="stylesheet" href="assets/css/categories.css">
+</head>
+
+<body>
+    <!-- =================================================== -->
+    <!-- HEADER SECTION -->
+    <!-- Contains logo (clickable to homepage), search bar (submits to search page),
+       and a cart icon (displays item count and links to cart page) -->
+    <header>
+        <div class="header-container">
+            <!-- Logo -->
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/images/Website Header Logo.png" alt="SHAOL Tech Logo" />
+                </a>
+            </div>
+            <!-- Search and Cart -->
+            <div class="header-right">
+                <!-- Search Form: on submit, directs to search.html with the query -->
+                <form id="search-form" action="search.html" method="get">
+                    <input type="text" name="query" placeholder="Search products..." required />
+                </form>
+                <!-- Cart Icon: shows current cart count (updated via JS) -->
+                <div class="cart-icon">
+                    <a href="cart.html">
+                        <img src="assets/images/cart-icon.png" alt="Cart" />
+                        <span id="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- =================================================== -->
+    <!-- CAROUSEL SECTION -->
+    <!-- A sliding carousel of images with auto-advance and clickable indicators.
+       The indicators update from ○ (inactive) to ⦿ (active) as slides change. -->
+    <section id="carousel">
+        <div class="carousel-container">
+            <!-- Carousel slides -->
+            <div class="carousel-slides">
+                <!-- Four slides; the first slide has the class "active" -->
+                <div class="slide active">
+                    <img src="assets/images/banner1.jpg" alt="Banner 1" />
+                </div>
+                <div class="slide">
+                    <img src="assets/images/banner2.jpg" alt="Banner 2" />
+                </div>
+                <div class="slide">
+                    <img src="assets/images/banner3.jpg" alt="Banner 3" />
+                </div>
+                <div class="slide">
+                    <img src="assets/images/banner4.jpeg" alt="Banner 4" />
+                </div>
+            </div>
+            <!-- Carousel indicators: 4 indicators matching the 4 slides -->
+            <div class="carousel-indicators">
+                <span class="indicator" data-slide="0">⦿</span>
+                <span class="indicator" data-slide="1">○</span>
+                <span class="indicator" data-slide="2">○</span>
+                <span class="indicator" data-slide="3">○</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- =================================================== -->
+    <!-- CATEGORY SECTION -->
+    <!-- Displays 12 categories (6 per row) with proper names and icon images.
+       Clicking a category will lead to the respective category page. -->
+       <section id="categories">
+        <h2>Categories</h2>
+        <div class="category-container">
+          <!-- Example Category Item -->
+          <div class="category-item" data-category="electronics">
+            <!-- You can use an emoji or an <img> tag here for the icon -->
+            <span class="category-icon">📱</span>
+            <p>Electronics</p>
+          </div>
+          <div class="category-item" data-category="fashion">
+            <span class="category-icon">👗</span>
+            <p>Fashion</p>
+          </div>
+          <div class="category-item" data-category="home-living">
+            <span class="category-icon">🏠</span>
+            <p>Home & Living</p>
+          </div>
+          <div class="category-item" data-category="toys">
+            <span class="category-icon">🧸</span>
+            <p>Toys</p>
+          </div>
+          <div class="category-item" data-category="books">
+            <span class="category-icon">📚</span>
+            <p>Books</p>
+          </div>
+          <div class="category-item" data-category="sports">
+            <span class="category-icon">⚽</span>
+            <p>Sports</p>
+          </div>
+          <div class="category-item" data-category="beauty">
+            <span class="category-icon">💄</span>
+            <p>Beauty</p>
+          </div>
+          <div class="category-item" data-category="gadgets">
+            <span class="category-icon">💡</span>
+            <p>Gadgets</p>
+          </div>
+          <div class="category-item" data-category="automotive">
+            <span class="category-icon">🚗</span>
+            <p>Automotive</p>
+          </div>
+          <div class="category-item" data-category="groceries">
+            <span class="category-icon">🛒</span>
+            <p>Groceries</p>
+          </div>
+        </div>
+      </section>      
+
+    <!-- =================================================== -->
+    <!-- FEATURED PRODUCTS SECTION -->
+    <!-- Shows featured products in a horizontal slider.
+       Product cards will be loaded dynamically from the JSON file.
+       Arrow buttons on the sides allow navigation. -->
+    <section id="featured-products">
+        <h2>Featured Products</h2>
+        <div class="featured-container">
+            <!-- Left arrow for navigation -->
+            <button class="arrow left-arrow">&#9664;</button>
+            <!-- Slider container for featured products -->
+            <div class="featured-products-slider" id="featured-products-container">
+                <!-- Product cards will be dynamically loaded from the JSON file -->
+            </div>
+            <!-- Right arrow for navigation -->
+            <button class="arrow right-arrow">&#9654;</button>
+        </div>
+    </section>
+
+    <!-- =================================================== -->
+    <!-- ALL PRODUCTS SECTION -->
+    <!-- Displays a grid of all products (5 per row) with multiple rows.
+       Product cards will be dynamically loaded from the JSON file.
+       A "View All Products" button directs users to the products page. -->
+    <section id="all-products">
+        <h2>All Products</h2>
+        <div class="all-products-grid" id="all-products-container">
+            <!-- Product cards will be dynamically loaded from the JSON file -->
+        </div>
+        <div class="view-all">
+            <a href="products.html" class="view-all-button">View All Products</a>
+        </div>
+    </section>
+
+    <!-- =================================================== -->
+    <!-- FOOTER SECTION -->
+    <!-- Contains logo, navigation links, contact info, and social media links -->
+    <footer>
+        <div class="footer-container">
+            <!-- Footer logo (clickable to homepage) -->
+            <div class="footer-logo">
+                <a href="index.html">
+                    <img src="assets/images/Website Header Logo.png" alt="SHAOL Tech Logo" />
+                </a>
+            </div>
+            <!-- Navigation links -->
+            <div class="footer-links">
+                <a href="products.html">Products</a>
+                <a href="categories.html">Categories</a>
+                <a href="cart.html">Cart</a>
+                <a href="checkout.html">Checkout</a>
+            </div>
+            <!-- Contact information -->
+            <div class="footer-contact">
+                <p>Contact us: <a href="mailto:support@shaoltech.com">support@shaoltech.com</a></p>
+            </div>
+            <!-- Social media links -->
+            <div class="footer-social">
+                <a href="https://facebook.com/shaoltech" target="_blank">Facebook</a>
+                <a href="https://twitter.com/shaoltech" target="_blank">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- =================================================== -->
+    <!-- JavaScript Files -->
+    <!-- Global and component-specific JavaScript files -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/header.js"></script>
+    <script src="assets/js/cart.js"></script>
+    <script src="assets/js/hero.js"></script>
+    <script src="assets/js/products.js"></script>
+</body>
+
+</html>

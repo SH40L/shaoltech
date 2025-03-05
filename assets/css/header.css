@@ -1,0 +1,52 @@
+/* header.css */
+/* Styles for the header section */
+
+/* Container layout for header */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Logo image styling */
+  .header-container .logo img {
+    height: 50px;
+  }
+  
+  /* Layout for search bar and cart icon */
+  .header-right {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Search form input styling */
+  #search-form input {
+    padding: 5px;
+    font-size: 16px;
+  }
+  
+  /* Cart icon and badge styling */
+  .cart-icon {
+    margin-left: 20px;
+    position: relative;
+  }
+  
+  .cart-icon img {
+    height: 30px;
+  }
+  
+  /* Cart count badge */
+  #cart-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: red;
+    color: #fff;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+  }
+  
