@@ -5,7 +5,7 @@
         "category": "Electronics",
         "description": "High-quality wireless earbuds with noise cancellation.",
         "images": [
-            "assets/images/products/Blank.jpg"            
+            "../assets/images/products/Blank.jpg"            
         ],
         "variants": [
             {
