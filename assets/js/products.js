@@ -1,9 +1,9 @@
 // products.js
 
-// Fetch products from the JSON file
 async function loadProducts() {
   try {
-    const response = await fetch('assets/data/products.json'); // Update the path
+    const response = await fetch('assets/data/products.json');
+    if (!response.ok) throw new Error('Failed to fetch products');
     const products = await response.json();
     displayFeaturedProducts(products);
     displayAllProducts(products);
@@ -12,7 +12,6 @@ async function loadProducts() {
   }
 }
 
-// Calculate price range for products with variants
 function getPriceRange(variants) {
   if (!variants || variants.length === 0) return 'Price not available';
   const prices = variants.map(variant => variant.price);
@@ -21,7 +20,6 @@ function getPriceRange(variants) {
   return minPrice === maxPrice ? `${minPrice}$` : `${minPrice} - ${maxPrice}$`;
 }
 
-// Display featured products in the slider (max 5 visible, slides if more)
 function displayFeaturedProducts(products) {
   const featuredContainer = document.getElementById('featured-products-container');
   const featuredProducts = products.filter(product => product.featured);
@@ -36,10 +34,9 @@ function displayFeaturedProducts(products) {
     </div>
   `).join('');
   
-  setupSlider(featuredContainer, featuredProducts.length);
+  setupSlider(featuredContainer);
 }
 
-// Display all products in a grid
 function displayAllProducts(products) {
   const allProductsContainer = document.getElementById('all-products-container');
   
@@ -54,31 +51,46 @@ function displayAllProducts(products) {
   `).join('');
 }
 
-// Slider functionality for featured products
-function setupSlider(container, productCount) {
+function setupSlider(container) {
   const leftArrow = document.querySelector('.left-arrow');
   const rightArrow = document.querySelector('.right-arrow');
   let scrollAmount = 0;
-  const productWidth = 220; // Approximate width of each product card
-  const visibleProducts = 5;
-  const maxScroll = (productCount - visibleProducts) * productWidth;
 
   leftArrow.addEventListener('click', () => {
-    scrollAmount = Math.max(scrollAmount - productWidth, 0);
+    const containerWidth = container.offsetWidth;
+    scrollAmount = Math.max(scrollAmount - containerWidth, 0);
     container.scrollTo({ left: scrollAmount, behavior: 'smooth' });
   });
 
   rightArrow.addEventListener('click', () => {
-    scrollAmount = Math.min(scrollAmount + productWidth, maxScroll);
+    const containerWidth = container.offsetWidth;
+    const maxScroll = container.scrollWidth - containerWidth;
+    scrollAmount = Math.min(scrollAmount + containerWidth, maxScroll);
     container.scrollTo({ left: scrollAmount, behavior: 'smooth' });
   });
 }
 
-// Redirect to Messenger with pre-filled product details
+function normalizeImagePath(path) {
+  return path.replace(/^\.\.\//g, '');
+}
+
 function messageUs(id, name, price, imageUrl) {
-  const fbLink = `https://m.me/429980123522052?text=I'm%20interested%20in%20this%20product:%0AID:%20${id}%0AName:%20${name}%0APrice:%20${price}%0AImage:%20${imageUrl}`;
+  const baseGithubUrl = "https://sh40l.github.io/shaoltech/";
+  const normalizedPath = normalizeImagePath(imageUrl);
+  let fullImageUrl = baseGithubUrl + normalizedPath;
+  
+  // Only replace spaces with %20 in the image URL
+  fullImageUrl = fullImageUrl.replace(/ /g, '%20');
+  
+  // Keep other parameters with original spaces
+  const messageText = `I'm interested in this product:
+ID: ${id}
+Name: ${name}
+Price: ${price}
+Image: ${fullImageUrl}`;
+
+  const fbLink = `https://m.me/429980123522052?text=${encodeURIComponent(messageText)}`;
   window.open(fbLink, '_blank');
 }
 
-// Initialize product loading on DOM ready
 document.addEventListener('DOMContentLoaded', loadProducts);
