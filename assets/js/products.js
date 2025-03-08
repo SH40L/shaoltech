@@ -1,73 +1,113 @@
 // products.js
-
 async function loadProducts() {
   try {
     const response = await fetch('assets/data/products.json');
-    if (!response.ok) throw new Error('Failed to fetch products');
+    if (!response.ok) throw new Error(`Network error: ${response.status}`);
     const products = await response.json();
-    displayFeaturedProducts(products);
-    displayAllProducts(products);
+    
+    // Validate products
+    const validProducts = products.filter(p => 
+      p.id && p.name && p.variants?.length > 0 && p.images?.length > 0
+    );
+
+    if (!validProducts.length) {
+      console.warn('No valid products found');
+      return showEmptyState();
+    }
+
+    displayFeaturedProducts(validProducts);
+    displayAllProducts(validProducts);
   } catch (error) {
-    console.error('Error loading products:', error);
+    console.error('Product loading failed:', error);
+    showErrorState();
   }
 }
 
-function getPriceRange(variants) {
-  if (!variants || variants.length === 0) return 'Price not available';
-  const prices = variants.map(variant => variant.price);
-  const minPrice = Math.min(...prices);
-  const maxPrice = Math.max(...prices);
-  return minPrice === maxPrice ? `${minPrice}$` : `${minPrice} - ${maxPrice}$`;
+function sanitize(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
 }
 
-function displayFeaturedProducts(products) {
-  const featuredContainer = document.getElementById('featured-products-container');
-  const featuredProducts = products.filter(product => product.featured);
+function getPriceRange(variants) {
+  if (!variants?.length) return 'Price unavailable';
+  const prices = variants.map(v => parseFloat(v.price));
+  if (prices.some(isNaN)) return 'Invalid price';
   
-  featuredContainer.innerHTML = featuredProducts.map(product => `
+  const min = Math.min(...prices).toFixed(2);
+  const max = Math.max(...prices).toFixed(2);
+  return min === max ? `$${min}` : `$${min} - $${max}`;
+}
+
+function createProductCard(product) {
+  const safeName = sanitize(product.name);
+  const safePrice = sanitize(getPriceRange(product.variants));
+  const safeImage = product.images?.length 
+    ? encodeURI(product.images[0])
+    : 'assets/images/placeholder.jpg';
+
+  return `
     <div class="product-card">
-      <img src="${product.images[0]}" alt="${product.name}">
-      <h3>${product.name}</h3>
-      <p class="price">${getPriceRange(product.variants)}</p>
-      <button class="buy-now" onclick="window.location.href='product-details.html?id=${product.id}'">Buy Now</button>
-      <button class="message-us" onclick="messageUs('${product.id}', '${product.name}', '${getPriceRange(product.variants)}', '${product.images[0]}')">Message Us</button>
+      <img src="${safeImage}" alt="${safeName}" loading="lazy">
+      <a href="product-details.html?id=${product.id}" class="product-name-link">
+        <h3>${safeName}</h3>
+      </a>
+      <p class="price">${safePrice}</p>
+      <button class="buy-now" 
+        onclick="window.location.href='product-details.html?id=${product.id}'">
+        Buy Now
+      </button>
+      <button class="message-us" 
+        onclick="messageUs('${product.id}', '${sanitize(product.name)}', '${getPriceRange(product.variants)}', '${safeImage}')">
+        Message Us
+      </button>
     </div>
-  `).join('');
+  `;
+}
+
+// Keep rest of the functions
+function displayFeaturedProducts(products) {
+  const container = document.getElementById('featured-products-container');
+  const featured = products.filter(p => p.featured);
   
-  setupSlider(featuredContainer);
+  container.innerHTML = featured.length 
+    ? featured.map(createProductCard).join('') 
+    : '<p class="empty">No featured products found</p>';
+    
+  setupSlider(container);
 }
 
 function displayAllProducts(products) {
-  const allProductsContainer = document.getElementById('all-products-container');
-  
-  allProductsContainer.innerHTML = products.map(product => `
-    <div class="product-card">
-      <img src="${product.images[0]}" alt="${product.name}">
-      <h3>${product.name}</h3>
-      <p class="price">${getPriceRange(product.variants)}</p>
-      <button class="buy-now" onclick="window.location.href='product-details.html?id=${product.id}'">Buy Now</button>
-      <button class="message-us" onclick="messageUs('${product.id}', '${product.name}', '${getPriceRange(product.variants)}', '${product.images[0]}')">Message Us</button>
-    </div>
-  `).join('');
+  const container = document.getElementById('all-products-container');
+  container.innerHTML = products.map(createProductCard).join('');
 }
 
 function setupSlider(container) {
   const leftArrow = document.querySelector('.left-arrow');
   const rightArrow = document.querySelector('.right-arrow');
   let scrollAmount = 0;
+  let maxScroll = 0;
+
+  function updateArrows() {
+    leftArrow.disabled = scrollAmount <= 0;
+    rightArrow.disabled = scrollAmount >= maxScroll;
+    maxScroll = container.scrollWidth - container.offsetWidth;
+  }
 
   leftArrow.addEventListener('click', () => {
-    const containerWidth = container.offsetWidth;
-    scrollAmount = Math.max(scrollAmount - containerWidth, 0);
+    scrollAmount = Math.max(scrollAmount - container.offsetWidth, 0);
     container.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+    updateArrows();
   });
 
   rightArrow.addEventListener('click', () => {
-    const containerWidth = container.offsetWidth;
-    const maxScroll = container.scrollWidth - containerWidth;
-    scrollAmount = Math.min(scrollAmount + containerWidth, maxScroll);
+    scrollAmount = Math.min(scrollAmount + container.offsetWidth, maxScroll);
     container.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+    updateArrows();
   });
+
+  new ResizeObserver(updateArrows).observe(container);
+  updateArrows();
 }
 
 function normalizeImagePath(path) {
@@ -78,11 +118,8 @@ function messageUs(id, name, price, imageUrl) {
   const baseGithubUrl = "https://sh40l.github.io/shaoltech/";
   const normalizedPath = normalizeImagePath(imageUrl);
   let fullImageUrl = baseGithubUrl + normalizedPath;
-  
-  // Only replace spaces with %20 in the image URL
   fullImageUrl = fullImageUrl.replace(/ /g, '%20');
   
-  // Keep other parameters with original spaces
   const messageText = `I'm interested in this product:
 ID: ${id}
 Name: ${name}
@@ -91,6 +128,18 @@ Image: ${fullImageUrl}`;
 
   const fbLink = `https://m.me/429980123522052?text=${encodeURIComponent(messageText)}`;
   window.open(fbLink, '_blank');
+}
+
+function showEmptyState() {
+  document.querySelectorAll('.products-container').forEach(container => {
+    container.innerHTML = `<p class="empty">No products available at the moment</p>`;
+  });
+}
+
+function showErrorState() {
+  document.querySelectorAll('.products-container').forEach(container => {
+    container.innerHTML = `<p class="error">Failed to load products. Please try again later.</p>`;
+  });
 }
 
 document.addEventListener('DOMContentLoaded', loadProducts);

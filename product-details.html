@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - SHAOL Tech</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+    <link rel="stylesheet" href="assets/css/product-details.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html" aria-label="Go to SHAOL Tech homepage">
+                    <img src="assets/images/Website Header Logo.png" alt="SHAOL Tech Logo" />
+                </a>
+            </div>
+            <div class="header-right">
+                <form id="search-form" action="search.html" method="get">
+                    <input type="text" name="query" placeholder="Search products..." aria-label="Search for products"
+                        required>
+                </form>
+                <div class="cart-icon">
+                    <a href="cart.html" aria-label="View shopping cart">
+                        <span class="cart-emoji">🛒</span>
+                        <span id="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="product-path">
+        <a href="index.html">Home</a> /
+        <a href="categories.html" class="product-category">Category</a> /
+        <span class="product-name">Product Name</span>
+    </nav>
+
+    <main class="product-main">
+        <section class="product-section">
+            <div class="product-images">
+                <div class="main-image-container">
+                    <img class="main-image" src="" alt="Main Product Image">
+                </div>
+                <div class="thumbnail-container">
+                    <button class="thumb-arrow left">‹</button>
+                    <div class="thumbnails"></div>
+                    <button class="thumb-arrow right">›</button>
+                </div>
+            </div>
+
+            <div class="product-info">
+                <h1 class="product-title">Product Name</h1>
+                <p class="product-price">$99.99</p>
+
+                <div class="variant-options"></div>
+
+                <div class="quantity-selector">
+                    <label>Quantity:</label>
+                    <button class="quantity-btn minus">-</button>
+                    <input type="number" value="1" min="1" class="quantity-input">
+                    <button class="quantity-btn plus">+</button>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="product-actions">
+                    <button class="add-to-cart">Add to Cart</button>
+                    <button class="buy-now">Buy Now</button>
+                    <a href="https://wa.me/8801518909913" target="_blank" class="call-us" style="display: flex; align-items: center; justify-content: center;" >
+                        <span><img src="assets/images/icons/whatsapp-business-icon.png" alt="whatsapp-business-icon" width="15px"></span>Call Us Now 01518 909913
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="details-section">
+            <div class="details-header">
+                <button class="detail-tab active" data-tab="description">Description</button>
+                <button class="detail-tab" data-tab="reviews">Reviews (0)</button>
+                <button class="detail-tab" data-tab="faq">FAQ</button>
+            </div>
+
+            <div class="tab-content">
+                <div class="tab-pane active" id="description">
+                    <div class="description-content"></div>
+                </div>
+                <div class="tab-pane" id="reviews">
+                    <div class="reviews-content"></div>
+                </div>
+                <div class="tab-pane" id="faq">
+                    <div class="faq-section">
+                        <h3>Product FAQs</h3>
+                        <div class="faq-items"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <a href="index.html" aria-label="Go to SHAOL Tech homepage">
+                    <img src="assets/images/Website Header Logo.png" alt="SHAOL Tech Logo" />
+                </a>
+            </div>
+            <div class="footer-links">
+                <a href="products.html">Products</a>
+                <a href="categories.html">Categories</a>
+                <a href="cart.html">Cart</a>
+                <a href="checkout.html">Checkout</a>
+            </div>
+            <div class="footer-contact">
+                <p>Contact us: <a href="mailto:support@shaoltech.com">support@shaoltech.com</a></p>
+            </div>
+            <div class="footer-social">
+                <a href="https://facebook.com/shaoltech" target="_blank">Facebook</a>
+                <a href="https://twitter.com/shaoltech" target="_blank">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/product-details.js"></script>
+    <script src="assets/js/header.js"></script>
+    <script src="assets/js/cart.js"></script>
+</body>
+
+</html>

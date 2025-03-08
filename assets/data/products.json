@@ -1,267 +1,54 @@
 [
     {
-        "id": 1,
-        "name": "Wireless Earbuds",
-        "category": "Electronics",
-        "description": "High-quality wireless earbuds with noise cancellation.",
-        "images": [
-            "assets/images/products/Allah + Muhammad.jpg"            
-        ],
-        "variants": [
-            {
-                "variant": "Black",
-                "price": 49.99
-            },
-            {
-                "variant": "White",
-                "price": 54.99
-            }
-        ],
-        "featured": true
-    },
-    {
-        "id": 2,
-        "name": "Smart Watch",
-        "category": "Electronics",
-        "description": "Latest smart watch with health tracking features.",
-        "images": [
-            "assets/images/products/Birth Date.jpg"
-        ],
-        "variants": [
-            {
-                "variant": "Silver",
-                "price": 89.99
-            },
-            {
-                "variant": "Gold",
-                "price": 99.99
-            }
-        ],
-        "featured": true
-    },
-    {
-        "id": 3,
-        "name": "Gaming Mouse",
-        "category": "Gadgets",
-        "description": "Ergonomic gaming mouse with customizable buttons.",
-        "images": [
-            "assets/images/products/Birthday Gift.jpg",
-            "assets/images/products/Blank.jpg"
-        ],
-        "variants": [
-            {
-                "variant": "Red",
-                "price": 29.99
-            },
-            {
-                "variant": "Blue",
-                "price": 34.99
-            }
-        ],
-        "featured": false
-    },
-    {
         "id": 4,
-        "name": "Bluetooth Speaker",
-        "category": "Electronics",
-        "description": "Portable Bluetooth speaker with bass boost.",
+        "name": "Premium Cotton T-Shirt",
+        "category": "Fashion",
+        "description": "<p>High-quality cotton t-shirt with unique designs:</p><img src='assets/images/products/Blank.jpg' alt='Design Options' class='desc-image'><ul><li>100% Organic Cotton</li><li>Premium Screen Printing</li><li>Available in multiple sizes</li></ul>",
         "images": [
-            "assets/images/products/speaker1.jpg",
-            "assets/images/products/speaker2.jpg"
+            "assets/images/products/Allah + Muhammad.jpg",
+            "assets/images/products/Birth Date.jpg",
+            "assets/images/products/Allah + Muhammad.jpg"
         ],
         "variants": [
             {
-                "variant": "Black",
-                "price": 59.99
-            }
-        ],
-        "featured": true
-    },
-    {
-        "id": 5,
-        "name": "Laptop Bag",
-        "category": "Accessories",
-        "description": "Durable laptop bag with multiple compartments.",
-        "images": [
-            "assets/images/products/bag1.jpg",
-            "assets/images/products/bag2.jpg"
-        ],
-        "variants": [
+                "size": "S",
+                "design": "Dragon Print",
+                "design_image": "assets/images/products/Birth Date.jpg",
+                "price": 24.99,
+                "image": "assets/images/products/Birth Date.jpg"
+            },
             {
-                "variant": "Gray",
-                "price": 39.99
-            }
-        ],
-        "featured": false
-    },
-    {
-        "id": 6,
-        "name": "Phone Stand",
-        "category": "Accessories",
-        "description": "Adjustable phone stand for desk use.",
-        "images": [
-            "assets/images/products/stand1.jpg",
-            "assets/images/products/stand2.jpg"
-        ],
-        "variants": [
+                "size": "M",
+                "design": "Abstract Art",
+                "design_image": "assets/images/products/Birthday Gift.jpg",
+                "price": 26.99,
+                "image": "assets/images/products/Birth Date.jpg"
+            },
             {
-                "variant": "White",
-                "price": 14.99
+                "size": "L",
+                "design": "Geometric Pattern",
+                "design_image": "assets/images/products/Blank.jpg",
+                "price": 27.99,
+                "image": "assets/images/products/Birth Date.jpg"
             }
         ],
-        "featured": true
-    },
-    {
-        "id": 7,
-        "name": "Wireless Keyboard",
-        "category": "Electronics",
-        "description": "Compact wireless keyboard with Bluetooth connectivity.",
-        "images": [
-            "assets/images/products/keyboard1.jpg",
-            "assets/images/products/keyboard2.jpg"
-        ],
-        "variants": [
+        "featured": true,
+        "reviews": [
             {
-                "variant": "Black",
-                "price": 44.99
+                "user": "FashionGuru",
+                "rating": 5,
+                "comment": "Absolutely love the print quality!",
+                "images": [
+                    "assets/images/reviews/review1-1.jpg",
+                    "assets/images/reviews/review1-2.jpg"
+                ]
             }
         ],
-        "featured": true
-    },
-    {
-        "id": 8,
-        "name": "Smartphone Case",
-        "category": "Accessories",
-        "description": "Shockproof case for smartphones.",
-        "images": [
-            "assets/images/products/case1.jpg",
-            "assets/images/products/case2.jpg"
-        ],
-        "variants": [
+        "faqs": [
             {
-                "variant": "Red",
-                "price": 19.99
+                "question": "How do I choose the right size?",
+                "answer": "Refer to our size chart in product description"
             }
-        ],
-        "featured": true
-    },
-    {
-        "id": 9,
-        "name": "Gaming Chair",
-        "category": "Home & Living",
-        "description": "Ergonomic gaming chair with adjustable height.",
-        "images": [
-            "assets/images/products/chair1.jpg",
-            "assets/images/products/chair2.jpg"
-        ],
-        "variants": [
-            {
-                "variant": "Black",
-                "price": 199.99
-            }
-        ],
-        "featured": false
-    },
-    {
-        "id": 10,
-        "name": "Mechanical Keyboard",
-        "category": "Electronics",
-        "description": "RGB mechanical keyboard for gaming.",
-        "images": [
-            "assets/images/products/mechkeyboard1.jpg",
-            "assets/images/products/mechkeyboard2.jpg"
-        ],
-        "variants": [
-            {
-                "variant": "Rainbow",
-                "price": 79.99
-            }
-        ],
-        "featured": true
-    },
-    {
-        "id": 11,
-        "name": "Power Bank",
-        "category": "Electronics",
-        "description": "10000mAh portable power bank.",
-        "images": [
-            "assets/images/products/powerbank1.jpg",
-            "assets/images/products/powerbank2.jpg"
-        ],
-        "variants": [
-            {
-                "variant": "White",
-                "price": 24.99
-            }
-        ],
-        "featured": false
-    },
-    {
-        "id": 12,
-        "name": "VR Headset",
-        "category": "Gadgets",
-        "description": "Virtual reality headset for immersive experience.",
-        "images": [
-            "assets/images/products/vr1.jpg",
-            "assets/images/products/vr2.jpg"
-        ],
-        "variants": [
-            {
-                "variant": "Black",
-                "price": 299.99
-            }
-        ],
-        "featured": true
-    },
-    {
-        "id": 13,
-        "name": "Tripod",
-        "category": "Accessories",
-        "description": "Adjustable tripod for cameras and phones.",
-        "images": [
-            "assets/images/products/tripod1.jpg",
-            "assets/images/products/tripod2.jpg"
-        ],
-        "variants": [
-            {
-                "variant": "Silver",
-                "price": 49.99
-            }
-        ],
-        "featured": true
-    },
-    {
-        "id": 14,
-        "name": "External Hard Drive",
-        "category": "Electronics",
-        "description": "1TB external hard drive for backups.",
-        "images": [
-            "assets/images/products/hdd1.jpg",
-            "assets/images/products/hdd2.jpg"
-        ],
-        "variants": [
-            {
-                "variant": "Black",
-                "price": 89.99
-            }
-        ],
-        "featured": true
-    },
-    {
-        "id": 15,
-        "name": "Graphic Tablet",
-        "category": "Gadgets",
-        "description": "Graphic tablet for digital artists.",
-        "images": [
-            "assets/images/products/tablet1.jpg",
-            "assets/images/products/tablet2.jpg"
-        ],
-        "variants": [
-            {
-                "variant": "Black",
-                "price": 129.99
-            }
-        ],
-        "featured": true
+        ]
     }
 ]

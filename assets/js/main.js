@@ -1,20 +1,15 @@
-/* main.js */
-/* Global JavaScript for SHAOL Tech website */
+// main.js
+document.addEventListener('DOMContentLoaded', () => {
+  // Initialize cart count
+  const updateCartCount = () => {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    document.getElementById('cart-count').textContent = 
+      cart.reduce((sum, item) => sum + item.quantity, 0);
+  };
 
-/**
- * updateCartCount - Reads the cart data from localStorage and updates the cart count display.
- * Assumes cart data is stored as a JSON array in localStorage under the key 'cart'.
- */
-function updateCartCount() {
-    const cartData = JSON.parse(localStorage.getItem('cart')) || [];
-    const cartCountEl = document.getElementById('cart-count');
-    if (cartCountEl) {
-      cartCountEl.textContent = cartData.length;
-    }
-  }
-  
-  // Initialize global functionalities when the DOM is fully loaded
-  document.addEventListener('DOMContentLoaded', function () {
-    updateCartCount();
-  });
-  
+  // Update on initial load
+  updateCartCount();
+
+  // Listen for cart updates
+  document.addEventListener('cartUpdated', updateCartCount);
+});

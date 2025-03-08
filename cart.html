@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - SHAOL Tech</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/cart.css">
+    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html" aria-label="Go to SHAOL Tech homepage">
+                    <img src="assets/images/Website Header Logo.png" alt="SHAOL Tech Logo" />
+                </a>
+            </div>
+            <div class="header-right">
+                <form id="search-form" action="search.html" method="get">
+                    <input type="text" name="query" placeholder="Search products..." aria-label="Search for products"
+                        required />
+                </form>
+                <div class="cart-icon">
+                    <a href="cart.html" aria-label="View shopping cart">
+                        <span class="cart-emoji">🛒</span>
+                        <span id="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="cart-container">
+        <h1>Shopping Cart</h1>
+        <div id="cart-items" class="cart-items"></div>
+        <div class="cart-summary">
+            <h2>Total: $<span id="cart-total">0.00</span></h2>
+            <div class="cart-actions">
+                <button onclick="clearCart()" class="clear-btn">Clear Cart</button>
+                <a href="checkout.html" class="checkout-btn">Checkout Now</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <a href="index.html" aria-label="Go to SHAOL Tech homepage">
+                    <img src="assets/images/Website Header Logo.png" alt="SHAOL Tech Logo" />
+                </a>
+            </div>
+            <div class="footer-links">
+                <a href="products.html">Products</a>
+                <a href="categories.html">Categories</a>
+                <a href="cart.html">Cart</a>
+                <a href="checkout.html">Checkout</a>
+            </div>
+            <div class="footer-contact">
+                <p>Contact us: <a href="mailto:support@shaoltech.com">support@shaoltech.com</a></p>
+            </div>
+            <div class="footer-social">
+                <a href="https://facebook.com/shaoltech" target="_blank">Facebook</a>
+                <a href="https://twitter.com/shaoltech" target="_blank">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/cart.js"></script>
+</body>
+
+</html>

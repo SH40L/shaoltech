@@ -1,45 +1,95 @@
 /* hero.css */
-/* Styles for the carousel (hero) section */
-
-/* Container for the carousel with fixed height */
 .carousel-container {
-    position: relative;
-    overflow: hidden;
-    max-width: 100%;
-    height: 400px;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 400px;
+  margin: 15px 0;
+}
+
+.carousel-slides {
+  display: flex;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  min-width: 100%;
+  height: 100%;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Arrows */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  color: white;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 2;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.arrow:hover {
+  color: #f0f0f0;
+}
+
+.left-arrow { left: 20px; }
+.right-arrow { right: 20px; }
+
+/* Indicators */
+.carousel-indicators {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 2;
+}
+
+.indicator {
+  cursor: pointer;
+  font-size: 20px;
+  color: black;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  transition: none;
+}
+
+.indicator.active {
+  color: #000;
+  transform: none;
+}
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+  .carousel-container {
+    height: 300px;
   }
   
-  /* Hide all slides by default */
-  .carousel-slides .slide {
-    display: none;
-    width: 100%;
-    height: 100%;
-  }
-  
-  /* Display the active slide */
-  .carousel-slides .slide.active {
-    display: block;
-  }
-  
-  /* Ensure images fill the slide area */
-  .carousel-slides .slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  /* Position carousel indicators at the bottom center */
-  .carousel-indicators {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  
-  /* Style indicators with pointer cursor */
-  .carousel-indicators .indicator {
-    cursor: pointer;
+  .arrow {
     font-size: 20px;
-    margin: 0 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-container {
+    height: 200px;
   }
   
+  .indicator {
+    font-size: 18px;
+  }
+  
+  .carousel-indicators {
+    bottom: 10px;
+  }
+}

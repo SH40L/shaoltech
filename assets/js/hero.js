@@ -1,53 +1,63 @@
-/* hero.js */
-/* JavaScript for handling the carousel (hero) functionality */
-
-const slides = document.querySelectorAll('.carousel-slides .slide');
-const indicators = document.querySelectorAll('.carousel-indicators .indicator');
+// hero.js
+const carouselSlides = document.querySelector('.carousel-slides');
+const slides = document.querySelectorAll('.slide');
+const indicators = document.querySelectorAll('.indicator');
+const prevArrow = document.querySelector('.left-arrow');
+const nextArrow = document.querySelector('.right-arrow');
 let currentSlide = 0;
 let slideInterval;
 
-/**
- * updateIndicators - Updates each indicator's inner text based on the active slide.
- * Active indicator shows "⦿", inactive shows "○".
- */
 function updateIndicators() {
   indicators.forEach((indicator, index) => {
-    indicator.textContent = (index === currentSlide) ? "⦿" : "○";
+    indicator.textContent = index === currentSlide ? "⦿" : "○";
   });
 }
 
-/**
- * goToSlide - Switches the carousel to the slide at the given index.
- * @param {number} n - The index of the slide to show.
- */
-function goToSlide(n) {
-  slides[currentSlide].classList.remove('active');
-  currentSlide = (n + slides.length) % slides.length;
-  slides[currentSlide].classList.add('active');
+function updateSlidePosition() {
+  carouselSlides.style.transform = `translateX(-${currentSlide * 100}%)`;
+}
+
+function nextSlide() {
+  currentSlide = (currentSlide + 1) % slides.length;
+  updateSlidePosition();
   updateIndicators();
 }
 
-/**
- * startSlideShow - Starts the automatic carousel slideshow.
- * The slide changes every 3 seconds.
- */
-function startSlideShow() {
-  slideInterval = setInterval(function () {
-    goToSlide(currentSlide + 1);
-  }, 3000);
+function prevSlide() {
+  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+  updateSlidePosition();
+  updateIndicators();
 }
 
-// Add click event listeners to carousel indicators for manual slide change
+function startAutoplay() {
+  slideInterval = setInterval(nextSlide, 3000);
+}
+
+// Event Listeners
+prevArrow.addEventListener('click', () => {
+  clearInterval(slideInterval);
+  prevSlide();
+  startAutoplay();
+});
+
+nextArrow.addEventListener('click', () => {
+  clearInterval(slideInterval);
+  nextSlide();
+  startAutoplay();
+});
+
 indicators.forEach((indicator, index) => {
   indicator.addEventListener('click', () => {
     clearInterval(slideInterval);
-    goToSlide(index);
-    startSlideShow();
+    currentSlide = index;
+    updateSlidePosition();
+    updateIndicators();
+    startAutoplay();
   });
 });
 
-// Start the carousel slideshow when the DOM is fully loaded
+// Initialize
 document.addEventListener('DOMContentLoaded', () => {
   updateIndicators();
-  startSlideShow();
+  startAutoplay();
 });

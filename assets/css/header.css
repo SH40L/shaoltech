@@ -3,50 +3,124 @@
 
 /* Container layout for header */
 .header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #fff;
-    padding: 10px 20px;
-    border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+  position: relative;
+}
+
+/* Logo image styling */
+.header-container .logo img {
+  height: 50px;
+  transition: transform 0.2s ease;
+}
+
+/* Layout for search bar and cart icon */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Search form input styling */
+#search-form {
+  position: relative;
+}
+
+#search-form input {
+  padding: 8px 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  width: 250px;
+  transition: all 0.3s ease;
+}
+
+#search-form input:focus {
+  outline: 2px solid #0066cc;
+  border-color: transparent;
+  box-shadow: 0 0 5px rgba(0, 102, 204, 0.3);
+}
+
+/* Cart icon styling */
+.cart-icon {
+  display: inline-block;
+  margin-left: 25px;
+  font-size: 1.2rem;
+}
+
+.cart-icon a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.cart-emoji {
+  font-size: 28px;
+}
+
+/* Cart count styling */
+#cart-count {
+  font-size: 1.1rem;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+}
+
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
   }
-  
-  /* Logo image styling */
-  .header-container .logo img {
-    height: 50px;
-  }
-  
-  /* Layout for search bar and cart icon */
+
   .header-right {
-    display: flex;
-    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 5px;
   }
-  
-  /* Search form input styling */
+
   #search-form input {
-    padding: 5px;
-    font-size: 16px;
+    width: 100%;
+    max-width: 200px;
   }
-  
-  /* Cart icon and badge styling */
+
   .cart-icon {
-    margin-left: 20px;
-    position: relative;
+    margin-left: 15px;
+    font-size: 1rem;
   }
-  
-  .cart-icon img {
-    height: 30px;
+
+  .cart-emoji {
+    font-size: 24px;
   }
-  
-  /* Cart count badge */
+
   #cart-count {
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    background-color: red;
-    color: #fff;
-    border-radius: 50%;
-    padding: 2px 6px;
-    font-size: 12px;
+    font-size: 0.9rem;
   }
-  
+}
+
+@media (max-width: 480px) {
+  #search-form input {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+
+  .header-container .logo img {
+    height: 40px;
+  }
+
+  .cart-emoji {
+    font-size: 22px;
+  }
+
+  #cart-count {
+    font-size: 0.85rem;
+  }
+}
